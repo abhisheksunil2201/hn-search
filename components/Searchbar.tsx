@@ -1,8 +1,17 @@
-import React, { ChangeEvent, useEffect, useState } from "react";
+import React, {
+  ChangeEvent,
+  Dispatch,
+  SetStateAction,
+  useEffect,
+  useState,
+} from "react";
 import * as _ from "lodash";
 import axios from "axios";
+import { IData } from "./HomePage";
+import { useData } from "../context/DataContext";
 
 export const Searchbar = () => {
+  const { setData } = useData();
   const [searchText, setSearchText] = useState<string>("");
 
   const handleSearchTextChange = _.debounce(
@@ -16,18 +25,21 @@ export const Searchbar = () => {
     if (searchText.trim() !== "") {
       axios
         .get(`http://hn.algolia.com/api/v1/search?query=${searchText}`)
-        .then((data) => console.log(data));
+        .then((data) => setData(data.data.hits as IData[]))
+        .catch((err) => console.log(err));
+    } else {
+      setData([]);
     }
-  }, [searchText]);
+  }, [searchText, setData]);
 
   return (
-    <div className="w-10/12">
-      <div className="flex items-center p-4">
+    <div className="w-full py-4">
+      <div className="flex items-center">
         <div className="relative w-full">
           <input
             type="text"
             onChange={handleSearchTextChange}
-            className="bg-background-100 border border-black text-gray-400 text-md rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full pl-10 p-2.5  "
+            className="bg-background-100 border border-black text-gray-400 text-md rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full pl-10 p-2.5"
             placeholder="Search"
             required
           />
