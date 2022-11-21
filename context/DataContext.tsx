@@ -8,7 +8,7 @@ import React, {
   useContext,
   useState,
 } from "react";
-import { IData } from "../components/HomePage";
+import { IData } from "../components/Homepage";
 
 interface IDataContext {
   data: IData[] | [];
