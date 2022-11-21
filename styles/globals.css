@@ -2,26 +2,41 @@
 @tailwind components;
 @tailwind utilities;
 
-.search-results,
-.postpage::-webkit-scrollbar {
+.search-results::-webkit-scrollbar {
   width: 10px;
   height: 20px;
 }
 
-.search-results,
-.postpage::-webkit-scrollbar-track {
+.search-results::-webkit-scrollbar-track {
   border-radius: 100vh;
   background: #161b19;
 }
 
-.search-results,
-.postpage::-webkit-scrollbar-thumb {
+.search-results::-webkit-scrollbar-thumb {
   background: #1dd79b;
   border-radius: 100vh;
   border: 3px solid gray;
 }
 
-.search-results,
+.search-results::-webkit-scrollbar-thumb:hover {
+  background: #11c10e;
+}
+.postpage::-webkit-scrollbar {
+  width: 10px;
+  height: 20px;
+}
+
+.postpage::-webkit-scrollbar-track {
+  border-radius: 100vh;
+  background: #161b19;
+}
+
+.postpage::-webkit-scrollbar-thumb {
+  background: #1f5e4c;
+  border-radius: 100vh;
+  border: 2px solid gray;
+}
+
 .postpage::-webkit-scrollbar-thumb:hover {
-  background: #c0a0b9;
+  background: #11c10e;
 }

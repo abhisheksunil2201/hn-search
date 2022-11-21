@@ -1,7 +1,8 @@
+import Image from "next/image";
 import Link from "next/link";
 import React from "react";
 import { useData } from "../context/DataContext";
-import { IData } from "./HomePage";
+import { IData } from "./Homepage";
 
 export const SearchResults = () => {
   const { data } = useData();
@@ -23,8 +24,9 @@ export const SearchResults = () => {
     );
   } else {
     return (
-      <div className="search-results bg-background-100 border border-black text-gray-500 text-md rounded-lg block w-full p-10 h-fit">
-        <p>No results</p>
+      <div className="bg-background-100 border border-black text-gray-500 text-md justify-center rounded-lg w-full flex flex-col items-center p-10 h-fit">
+        <Image width="200" height="200" src="/assets/no-result.svg" alt="" />
+        <p>No results found</p>
       </div>
     );
   }

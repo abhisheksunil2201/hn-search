@@ -1,13 +1,7 @@
-import React, {
-  ChangeEvent,
-  Dispatch,
-  SetStateAction,
-  useEffect,
-  useState,
-} from "react";
+import React, { ChangeEvent, useEffect, useState } from "react";
 import * as _ from "lodash";
 import axios from "axios";
-import { IData } from "./HomePage";
+import { IData } from "./Homepage";
 import { useData } from "../context/DataContext";
 
 export const Searchbar = () => {
@@ -18,7 +12,7 @@ export const Searchbar = () => {
     (e: ChangeEvent<HTMLInputElement>) => {
       setSearchText(e.target.value);
     },
-    1000
+    500
   );
 
   useEffect(() => {
@@ -33,7 +27,8 @@ export const Searchbar = () => {
   }, [searchText, setData]);
 
   return (
-    <div className="w-full py-4">
+    <div className="w-full py-4 text-white">
+      <p className="text-xl py-4">Search for any article from Hacker News</p>
       <div className="flex items-center">
         <div className="relative w-full">
           <input
